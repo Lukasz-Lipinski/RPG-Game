@@ -1,15 +1,24 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.SignalR;
-using myRPG.Dtos.Schemas;
-
 namespace myRPG.Dtos.Monster
 {
-    public class Monster : Character
+    public class Monster : Character, ICharacterTypeRaceClass
     {
         public Monster() { }
+
+        public CharacterClass CharacterClass
+        {
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
+        }
+        public CharacterRace CharacterRace
+        {
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
+        }
+        public CharacterType CharacterType
+        {
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
+        }
 
         public override int Attack()
         {
