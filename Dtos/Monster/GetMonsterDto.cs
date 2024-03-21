@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace myRPG.Dtos.Monster
 {
-    public class GetMonsterDto
+    public class GetMonsterDto : Monster, IGetCharacterTypeRaceClass
     {
-        
+        public string CharacterClass {get;set;}
+        public string CharacterRace {get;set;}
+        public string CharacterType {get;set;}
     }
 }

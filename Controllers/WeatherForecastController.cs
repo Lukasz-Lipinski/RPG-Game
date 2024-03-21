@@ -21,6 +21,16 @@ public class WeatherForecastController : ControllerBase
                 CharacterType = CharacterType.Alive
             };
 
-        return Ok(monster);
+        GetMonsterDto newMonster = new() {
+            HP = monster.HP,
+            Level = monster.Level,
+            MP = monster.MP,
+            Name = monster.Name,
+            CharacterClass = monster.CharacterClass.ToString(),
+            CharacterRace = monster.CharacterRace.ToString(),
+            CharacterType = monster.CharacterType.ToString(),
+        };
+
+        return Ok(newMonster);
     }
 }

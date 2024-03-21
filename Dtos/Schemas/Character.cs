@@ -11,9 +11,6 @@ namespace myRPG.Dtos.Schemas
         public int HP { get; set; }
         public int MP { get; set; }
         public int Level { get; set; }
-        protected CharacterClass CharacterClass { get; set; }
-        protected CharacterRace CharacterRace { get; set; }
-        protected CharacterType CharacterType { get; set; }
 
         public abstract int Attack();
         public abstract void Defend();
