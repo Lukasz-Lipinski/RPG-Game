@@ -7,20 +7,8 @@ namespace myRPG.Dtos.Monster
 {
     public class GetMonsterDto : Monster, IGetCharacterTypeRaceClass
     {
-        string IGetCharacterTypeRaceClass.CharacterClass
-        {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
-        string IGetCharacterTypeRaceClass.CharacterRace
-        {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
-        string IGetCharacterTypeRaceClass.CharacterType
-        {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
+        public string CharacterClass {get;set;}
+        public string CharacterRace {get;set;}
+        public string CharacterType {get;set;}
     }
 }

@@ -4,21 +4,9 @@ namespace myRPG.Dtos.Monster
     {
         public Monster() { }
 
-        public CharacterClass CharacterClass
-        {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
-        public CharacterRace CharacterRace
-        {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
-        public CharacterType CharacterType
-        {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
+        public CharacterClass CharacterClass {get; set;}
+        public CharacterRace CharacterRace {get; set;}
+        public CharacterType CharacterType {get; set;}
 
         public override int Attack()
         {
