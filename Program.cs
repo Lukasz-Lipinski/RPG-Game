@@ -1,4 +1,6 @@
 global using myRPG.Dtos.Schemas;
+global using myRPG.Dtos.Monster;
+global using myRPG.Dtos.Player;
 
 var builder = WebApplication.CreateBuilder(args);
 
