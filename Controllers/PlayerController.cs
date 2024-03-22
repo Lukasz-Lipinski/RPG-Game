@@ -11,19 +11,29 @@ namespace myRPG.Controllers
     [Route("api/[controller]")]
     public class PlayerController : ControllerBase
     {
+        private readonly IPlayerService playerService;
+
+        public PlayerController(IPlayerService playerService)
+        {
+            this.playerService = playerService;
+        }
+
         [HttpGet("{name}")]
         public ActionResult<Player> GetPlayer(string name)
         {
-            Player player = new()
+            if (String.IsNullOrWhiteSpace(name))
             {
-                Name = name,
-                Level = 1,
-                HP = 100,
-                MP = 150,
-                CharacterClass = CharacterClass.Mag,
-                CharacterRace = CharacterRace.Orc,
-                CharacterType = CharacterType.Alive,
+                return BadRequest("Name was assigned");
             };
+
+            var player = Store.Players.FirstOrDefault(
+                p => p.Name == name
+            );
+
+            if (player is null)
+            {
+                return BadRequest("Invalid name");
+            }
 
             GetPlayerDto newPlayer = new()
             {
@@ -59,20 +69,27 @@ namespace myRPG.Controllers
                 CharacterType = (CharacterType)Enum.Parse(typeof(CharacterType), newCharacter.CharacterType),
             };
 
-            System.Console.WriteLine(newPlayer);
+            this.playerService.CheckIfPlayerExist(newPlayer, out bool isUserCreated);
 
-            GetPlayerDto newPlayerDto = new()
-            {
-                Name = newPlayer.Name,
-                Level = newPlayer.Level,
-                HP = newPlayer.HP,
-                MP = newPlayer.MP,
-                CharacterClass = newPlayer.CharacterClass.ToString(),
-                CharacterRace = newPlayer.CharacterRace.ToString(),
-                CharacterType = newPlayer.CharacterType.ToString(),
-            };
+            System.Console.WriteLine(isUserCreated);
 
-            return Ok(newPlayerDto);
+            // if (!isUserCreated)
+            // {
+            //     return BadRequest("User exist!");
+            // }
+
+            // GetPlayerDto newPlayerDto = new()
+            // {
+            //     Name = newPlayer.Name,
+            //     Level = newPlayer.Level,
+            //     HP = newPlayer.HP,
+            //     MP = newPlayer.MP,
+            //     CharacterClass = newPlayer.CharacterClass.ToString(),
+            //     CharacterRace = newPlayer.CharacterRace.ToString(),
+            //     CharacterType = newPlayer.CharacterType.ToString(),
+            // };
+
+            return Ok(newPlayer);
         }
     }
 }

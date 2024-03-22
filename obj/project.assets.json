@@ -469,24 +469,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\llipinsk\\.nuget\\packages\\": {}
+    "C:\\Users\\Wookie\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\c#-projects\\myRPG\\myRPG.csproj",
+      "projectUniqueName": "C:\\Projects\\dotnet\\myRPG\\myRPG.csproj",
       "projectName": "myRPG",
-      "projectPath": "C:\\Projects\\c#-projects\\myRPG\\myRPG.csproj",
-      "packagesPath": "C:\\Users\\llipinsk\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\c#-projects\\myRPG\\obj\\",
+      "projectPath": "C:\\Projects\\dotnet\\myRPG\\myRPG.csproj",
+      "packagesPath": "C:\\Users\\Wookie\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\dotnet\\myRPG\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\llipinsk\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Wookie\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -533,7 +534,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.407\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

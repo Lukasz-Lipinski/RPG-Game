@@ -1,6 +1,8 @@
+global using myRPG.DB;
 global using myRPG.Dtos.Schemas;
 global using myRPG.Dtos.Monster;
 global using myRPG.Dtos.Player;
+global using myRPG.Services.PlayerServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IPlayerService, PlayerService>();
 
 var app = builder.Build();
 
