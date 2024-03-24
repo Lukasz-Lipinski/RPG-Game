@@ -97,3 +97,4 @@ C:\Projects\dotnet\myRPG\obj\Debug\net7.0\refint\myRPG.dll
 C:\Projects\dotnet\myRPG\obj\Debug\net7.0\myRPG.pdb
 C:\Projects\dotnet\myRPG\obj\Debug\net7.0\myRPG.genruntimeconfig.cache
 C:\Projects\dotnet\myRPG\obj\Debug\net7.0\ref\myRPG.dll
+C:\Projects\dotnet\myRPG\bin\Debug\net7.0\AutoMapper.dll

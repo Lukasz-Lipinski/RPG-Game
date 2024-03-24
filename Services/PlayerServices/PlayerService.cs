@@ -12,23 +12,27 @@ namespace myRPG.Services.PlayerServices
             Store.Players.Add(player);
         }
 
-        public void CheckIfPlayerExist(Player player, out bool result)
+        public bool CheckIfPlayerExist(Player player)
         {
-            if (Store.Players.Count == 0)
-            {
-                result = false;
-            }
-            var foundPlayer = Store.Players
-                .FirstOrDefault(p => p.Name == player.Name);
 
-            if (foundPlayer is null)
+            Player foundPlayer;
+
+            try
             {
-                result = false;
+                player = Store.Players
+                    .FirstOrDefault(p => p.Name == player.Name);
+                return false;
             }
-            else
+            catch
             {
-                result = true;
             }
+
+            if (Store.Players.Count != 0 && player is null)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

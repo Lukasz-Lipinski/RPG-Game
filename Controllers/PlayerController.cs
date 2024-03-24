@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using myRPG.Dtos.Player;
 
@@ -11,11 +12,14 @@ namespace myRPG.Controllers
     [Route("api/[controller]")]
     public class PlayerController : ControllerBase
     {
+        private GetPlayerDto MapToGetPlayerDto(Character character) => this.mapper.Map<GetPlayerDto>(character);
         private readonly IPlayerService playerService;
+        private readonly IMapper mapper;
 
-        public PlayerController(IPlayerService playerService)
+        public PlayerController(IPlayerService playerService, IMapper mapper)
         {
             this.playerService = playerService;
+            this.mapper = mapper;
         }
 
         [HttpGet("{name}")]
@@ -35,16 +39,7 @@ namespace myRPG.Controllers
                 return BadRequest("Invalid name");
             }
 
-            GetPlayerDto newPlayer = new()
-            {
-                HP = player.HP,
-                MP = player.MP,
-                Name = player.Name,
-                Level = player.Level,
-                CharacterClass = player.CharacterClass.ToString(),
-                CharacterRace = player.CharacterRace.ToString(),
-                CharacterType = player.CharacterType.ToString(),
-            };
+            GetPlayerDto newPlayer = this.MapToGetPlayerDto(player);
 
             return Ok(newPlayer);
         }
@@ -52,7 +47,6 @@ namespace myRPG.Controllers
         [HttpPost("create-hero")]
         public ActionResult<Player> CreateCharakter([FromBody] CreatePlayer newCharacter)
         {
-
             if (newCharacter == null)
             {
                 return NoContent();
@@ -69,27 +63,16 @@ namespace myRPG.Controllers
                 CharacterType = (CharacterType)Enum.Parse(typeof(CharacterType), newCharacter.CharacterType),
             };
 
-            this.playerService.CheckIfPlayerExist(newPlayer, out bool isUserCreated);
+            if (this.playerService.CheckIfPlayerExist(newPlayer))
+            {
+                return BadRequest("Invalid user credentials");
+            }
 
-            System.Console.WriteLine(isUserCreated);
+            Store.Players.Add(newPlayer);
 
-            // if (!isUserCreated)
-            // {
-            //     return BadRequest("User exist!");
-            // }
+            GetPlayerDto newPlayerDto = this.MapToGetPlayerDto(newPlayer);
 
-            // GetPlayerDto newPlayerDto = new()
-            // {
-            //     Name = newPlayer.Name,
-            //     Level = newPlayer.Level,
-            //     HP = newPlayer.HP,
-            //     MP = newPlayer.MP,
-            //     CharacterClass = newPlayer.CharacterClass.ToString(),
-            //     CharacterRace = newPlayer.CharacterRace.ToString(),
-            //     CharacterType = newPlayer.CharacterType.ToString(),
-            // };
-
-            return Ok(newPlayer);
+            return Ok(newPlayerDto);
         }
     }
 }
