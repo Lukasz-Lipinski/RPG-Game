@@ -3,6 +3,7 @@ global using myRPG.Dtos.Schemas;
 global using myRPG.Dtos.Monster;
 global using myRPG.Dtos.Player;
 global using myRPG.Services.PlayerServices;
+global using myRPG.Services.MonsterServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
