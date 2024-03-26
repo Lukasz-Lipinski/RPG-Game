@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using myRPG.Dtos.Player;
 
@@ -11,30 +12,34 @@ namespace myRPG.Controllers
     [Route("api/[controller]")]
     public class PlayerController : ControllerBase
     {
+        private GetPlayerDto MapToGetPlayerDto(Character character) => this.mapper.Map<GetPlayerDto>(character);
+        private readonly IPlayerService playerService;
+        private readonly IMapper mapper;
+
+        public PlayerController(IPlayerService playerService, IMapper mapper)
+        {
+            this.playerService = playerService;
+            this.mapper = mapper;
+        }
+
         [HttpGet("{name}")]
         public ActionResult<Player> GetPlayer(string name)
         {
-            Player player = new()
+            if (String.IsNullOrWhiteSpace(name))
             {
-                Name = name,
-                Level = 1,
-                HP = 100,
-                MP = 150,
-                CharacterClass = CharacterClass.Mag,
-                CharacterRace = CharacterRace.Orc,
-                CharacterType = CharacterType.Alive,
+                return BadRequest("Name was assigned");
             };
 
-            GetPlayerDto newPlayer = new()
+            var player = Store.Players.FirstOrDefault(
+                p => p.Name == name
+            );
+
+            if (player is null)
             {
-                HP = player.HP,
-                MP = player.MP,
-                Name = player.Name,
-                Level = player.Level,
-                CharacterClass = player.CharacterClass.ToString(),
-                CharacterRace = player.CharacterRace.ToString(),
-                CharacterType = player.CharacterType.ToString(),
-            };
+                return BadRequest("Invalid name");
+            }
+
+            GetPlayerDto newPlayer = this.MapToGetPlayerDto(player);
 
             return Ok(newPlayer);
         }
@@ -42,7 +47,6 @@ namespace myRPG.Controllers
         [HttpPost("create-hero")]
         public ActionResult<Player> CreateCharakter([FromBody] CreatePlayer newCharacter)
         {
-
             if (newCharacter == null)
             {
                 return NoContent();
@@ -59,18 +63,14 @@ namespace myRPG.Controllers
                 CharacterType = (CharacterType)Enum.Parse(typeof(CharacterType), newCharacter.CharacterType),
             };
 
-            System.Console.WriteLine(newPlayer);
-
-            GetPlayerDto newPlayerDto = new()
+            if (this.playerService.CheckIfPlayerExist(newPlayer))
             {
-                Name = newPlayer.Name,
-                Level = newPlayer.Level,
-                HP = newPlayer.HP,
-                MP = newPlayer.MP,
-                CharacterClass = newPlayer.CharacterClass.ToString(),
-                CharacterRace = newPlayer.CharacterRace.ToString(),
-                CharacterType = newPlayer.CharacterType.ToString(),
-            };
+                return BadRequest("Invalid user credentials");
+            }
+
+            Store.Players.Add(newPlayer);
+
+            GetPlayerDto newPlayerDto = this.MapToGetPlayerDto(newPlayer);
 
             return Ok(newPlayerDto);
         }
