@@ -8,11 +8,10 @@ using Microsoft.VisualStudio.TestPlatform.Utilities;
 namespace myRPG
 {
     public class AutoMapper : Profile
-    
+    {
         public AutoMapper()
         {
             CreateMap<Player, GetPlayerDto>();
-            
         }
     }
 }
