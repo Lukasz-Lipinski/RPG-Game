@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using myRPG.DB;
 
@@ -7,27 +12,35 @@ namespace myRPG.Controllers
     [Route("api/[controller]")]
     public class PlayerController : ControllerBase
     {
+        private GetPlayerDto MapToGetPlayerDto(Character character) =>
+            this.mapper.Map<GetPlayerDto>(character);
+
+        private readonly IPlayerService playerService;
+        private readonly IMapper mapper;
+
+        public PlayerController(IPlayerService playerService, IMapper mapper)
+        {
+            this.playerService = playerService;
+            this.mapper = mapper;
+        }
+
         [HttpGet("{name}")]
         public ActionResult<Player> GetPlayer(string name)
         {
+            if (String.IsNullOrWhiteSpace(name))
+            {
+                return BadRequest("Name was assigned");
+            }
+            ;
+
             var player = Store.Players.FirstOrDefault(p => p.Name == name);
 
-            if (player == null)
+            if (player is null)
             {
-                return BadRequest("User with passed name doesn't exist");
+                return BadRequest("Invalid name");
             }
 
-            GetPlayerDto newPlayer =
-                new()
-                {
-                    HP = player.HP,
-                    MP = player.MP,
-                    Name = player.Name,
-                    Level = player.Level,
-                    CharacterClass = player.CharacterClass.ToString(),
-                    CharacterRace = player.CharacterRace.ToString(),
-                    CharacterType = player.CharacterType.ToString(),
-                };
+            GetPlayerDto newPlayer = this.MapToGetPlayerDto(player);
 
             return Ok(newPlayer);
         }
@@ -35,13 +48,6 @@ namespace myRPG.Controllers
         [HttpPost("create-hero")]
         public ActionResult<Player> CreateCharakter([FromBody] CreatePlayer newCharacter)
         {
-            var user = Store.Players.FirstOrDefault(p => p.Name == newCharacter.Name);
-
-            if (user is not null)
-            {
-                return Conflict("Added user already exist!");
-            }
-
             if (newCharacter == null)
             {
                 return NoContent();
@@ -60,6 +66,8 @@ namespace myRPG.Controllers
                 CharacterType = (CharacterType)
                     Enum.Parse(typeof(CharacterType), newCharacter.CharacterType),
             };
+
+            System.Console.WriteLine(newPlayer);
 
             GetPlayerDto newPlayerDto =
                 new()
