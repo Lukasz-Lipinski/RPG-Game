@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
-using Microsoft.VisualStudio.TestPlatform.Utilities;
 
 namespace myRPG
 {
@@ -12,6 +7,7 @@ namespace myRPG
         public AutoMapper()
         {
             CreateMap<Player, GetPlayerDto>();
+            CreateMap<Monster, GetMonsterDto>();
         }
     }
 }

@@ -42,6 +42,10 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "JustMock": {
+              "target": "Package",
+              "version": "[2024.1.124.247, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.17, )"

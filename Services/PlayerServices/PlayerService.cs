@@ -14,18 +14,7 @@ namespace myRPG.Services.PlayerServices
 
         public bool CheckIfPlayerExist(Player player)
         {
-
-            Player foundPlayer;
-
-            try
-            {
-                player = Store.Players
-                    .FirstOrDefault(p => p.Name == player.Name);
-                return false;
-            }
-            catch
-            {
-            }
+            Player foundPlayer = Store.Players.FirstOrDefault(p => p.Name == player.Name);
 
             if (Store.Players.Count != 0 && player is null)
             {

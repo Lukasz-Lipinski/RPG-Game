@@ -67,8 +67,6 @@ namespace myRPG.Controllers
                     Enum.Parse(typeof(CharacterType), newCharacter.CharacterType),
             };
 
-            System.Console.WriteLine(newPlayer);
-
             GetPlayerDto newPlayerDto =
                 new()
                 {
