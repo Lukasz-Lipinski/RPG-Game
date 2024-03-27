@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-
 namespace myRPG.Services.MonsterServices
 {
     public class MonsterService : IMonsterService
@@ -21,10 +15,10 @@ namespace myRPG.Services.MonsterServices
 
         private int GenerateCharacterDetails(int max = 3) => new Random().Next(0, max);
 
-        public GetMonsterDto FindMonster(int playerLevel)
+        public GetMonsterDto? FindMonster(int playerLevel)
         {
-            int maxLevel = playerLevel + 3; // 8
-            int minLevel = playerLevel - 3 <= 1 ? playerLevel : playerLevel - 3; //2
+            int maxLevel = playerLevel + 3;
+            int minLevel = playerLevel - 3 <= 1 ? playerLevel : playerLevel - 3;
 
             System.Console.WriteLine(maxLevel);
             System.Console.WriteLine(minLevel);
@@ -57,14 +51,9 @@ namespace myRPG.Services.MonsterServices
                 CharacterType = (CharacterType)this.GenerateCharacterDetails(3),
             };
 
-            this.AddNewMonster(monster);
+            Store.Monsters.Add(monster);
 
             return this.mapper.Map<GetMonsterDto>(monster);
-        }
-
-        private void AddNewMonster(Monster monster)
-        {
-            Store.Monsters.Add(monster);
         }
     }
 }

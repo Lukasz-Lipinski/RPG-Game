@@ -4,7 +4,7 @@ global using myRPG.Dtos.Monster;
 global using myRPG.Dtos.Player;
 global using myRPG.Services.PlayerServices;
 global using myRPG.Services.MonsterServices;
-global using myRPG.DB;
+global using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 

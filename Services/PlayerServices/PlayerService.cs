@@ -7,6 +7,13 @@ namespace myRPG.Services.PlayerServices
 {
     public class PlayerService : IPlayerService
     {
+        private readonly IMapper mapper;
+
+        public PlayerService(IMapper mapper)
+        {
+            this.mapper = mapper;
+        }
+
         public void AddPlayerToDB(Player player)
         {
             Store.Players.Add(player);
@@ -22,6 +29,14 @@ namespace myRPG.Services.PlayerServices
             }
 
             return true;
+        }
+
+        public Player CreatePlayer(CreatePlayer playerData)
+        {
+            var newPlayer = this.mapper.Map<Player>(playerData);
+            newPlayer.Id = new Guid();
+
+            return newPlayer;
         }
     }
 }

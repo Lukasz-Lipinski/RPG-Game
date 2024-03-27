@@ -1,10 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using myRPG.DB;
 
 namespace myRPG.Controllers
 {
@@ -53,31 +47,22 @@ namespace myRPG.Controllers
                 return NoContent();
             }
 
-            var newPlayer = new Player()
-            {
-                Name = newCharacter.Name,
-                Level = 1,
-                HP = 100,
-                MP = 100,
-                CharacterClass = (CharacterClass)
-                    Enum.Parse(typeof(CharacterClass), newCharacter.CharacterClass),
-                CharacterRace = (CharacterRace)
-                    Enum.Parse(typeof(CharacterRace), newCharacter.CharacterRace),
-                CharacterType = (CharacterType)
-                    Enum.Parse(typeof(CharacterType), newCharacter.CharacterType),
-            };
+            var newPlayer = this.playerService.CreatePlayer(newCharacter);
+            GetPlayerDto newPlayerDto = this.mapper.Map<GetPlayerDto>(newPlayer);
 
-            GetPlayerDto newPlayerDto =
-                new()
-                {
-                    Name = newPlayer.Name,
-                    Level = newPlayer.Level,
-                    HP = newPlayer.HP,
-                    MP = newPlayer.MP,
-                    CharacterClass = newPlayer.CharacterClass.ToString(),
-                    CharacterRace = newPlayer.CharacterRace.ToString(),
-                    CharacterType = newPlayer.CharacterType.ToString(),
-                };
+            // var newPlayer = new Player()
+            // {
+            //     Name = newCharacter.Name,
+            //     Level = 1,
+            //     HP = 100,
+            //     MP = 100,
+            //     CharacterClass = (CharacterClass)
+            //         Enum.Parse(typeof(CharacterClass), newCharacter.CharacterClass),
+            //     CharacterRace = (CharacterRace)
+            //         Enum.Parse(typeof(CharacterRace), newCharacter.CharacterRace),
+            //     CharacterType = (CharacterType)
+            //         Enum.Parse(typeof(CharacterType), newCharacter.CharacterType),
+            // };
 
             Store.Players.Add(newPlayer);
 
