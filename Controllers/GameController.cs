@@ -1,4 +1,3 @@
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace myRPG.Controllers
@@ -16,23 +15,23 @@ namespace myRPG.Controllers
             this.mapper = mapper;
         }
 
-        [HttpGet("all-monsters")]
-        public ActionResult<List<GetMonsterDto>> FindMonster()
+        [HttpGet("start-battle")]
+        public ActionResult<Dictionary<string, Character>> StartBattle()
         {
-            var monsters = Store.Monsters
-                .AsReadOnly()
-                .Select(m => this.mapper.Map<GetMonsterDto>(m))
-                .ToList();
+            if (!Store.Battle.ContainsKey("player"))
+            {
+                return NoContent();
+            }
+            var player = Store.Battle["player"];
+            var monster = this.monsterService.FindMonster(player.Level);
 
-            return Ok(monsters);
-        }
+            if (monster is null)
+            {
+                return NoContent();
+            }
 
-        [HttpPost("create-new-monster")]
-        public ActionResult<GetMonsterDto> CreateNewMonster(int level, string name)
-        {
-            var newMonster = this.monsterService.CreateNewMonster(level, name);
-
-            return Ok(newMonster);
+            Store.Battle.Add("enemy", monster);
+            return Ok(Store.Battle);
         }
     }
 }

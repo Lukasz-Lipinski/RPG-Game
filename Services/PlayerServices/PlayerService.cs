@@ -1,7 +1,10 @@
 namespace myRPG.Services.PlayerServices
 {
-    public class PlayerService : IPlayerService
+    public class PlayerService : SettingStats, IPlayerService
     {
+        public Player GetPlayerById(Guid id) =>
+            Store.Players.FirstOrDefault(p => Guid.Equals(p.Id, id));
+
         private readonly IMapper mapper;
 
         public PlayerService(IMapper mapper)
@@ -14,11 +17,11 @@ namespace myRPG.Services.PlayerServices
             Store.Players.Add(player);
         }
 
-        public bool CheckIfPlayerExist(Player player)
+        public bool CheckIfPlayerExist(Guid id)
         {
-            Player foundPlayer = Store.Players.FirstOrDefault(p => p.Name == player.Name);
+            Player foundPlayer = this.GetPlayerById(id);
 
-            if (Store.Players.Count != 0 && player is null)
+            if (Store.Players.Count != 0 && foundPlayer is null)
             {
                 return false;
             }
@@ -29,7 +32,15 @@ namespace myRPG.Services.PlayerServices
         public Player CreatePlayer(CreatePlayer playerData)
         {
             var newPlayer = this.mapper.Map<Player>(playerData);
-            newPlayer.Id = new Guid();
+            newPlayer.Id = Guid.NewGuid();
+            newPlayer.HP = (int)(
+                this.GetHPOnStart(newPlayer.CharacterClass)
+                + this.GetHPIndex(newPlayer.CharacterClass) * newPlayer.Level
+            );
+            newPlayer.MP = (int)(
+                this.GetMPOnStart(newPlayer.CharacterClass)
+                + this.GetMPIndex(newPlayer.CharacterClass) * newPlayer.Level
+            );
 
             return newPlayer;
         }

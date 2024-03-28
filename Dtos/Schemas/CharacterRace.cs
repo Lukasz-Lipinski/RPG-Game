@@ -4,6 +4,7 @@ namespace myRPG.Dtos.Schemas
     {
         Human,
         Orc,
-        Skeleton,
+        Elf,
+        Dwarf,
     }
 }

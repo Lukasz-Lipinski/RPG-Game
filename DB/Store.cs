@@ -4,5 +4,6 @@ namespace myRPG.DB
     {
         public static List<Player> Players { get; set; } = new();
         public static List<Monster> Monsters { get; set; } = new();
+        public static Dictionary<string, Character?> Battle = new();
     }
 }
