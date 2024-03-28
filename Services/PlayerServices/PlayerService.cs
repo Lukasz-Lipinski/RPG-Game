@@ -1,12 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace myRPG.Services.PlayerServices
 {
     public class PlayerService : IPlayerService
     {
+        private readonly IMapper mapper;
+
+        public PlayerService(IMapper mapper)
+        {
+            this.mapper = mapper;
+        }
+
         public void AddPlayerToDB(Player player)
         {
             Store.Players.Add(player);
@@ -14,18 +16,7 @@ namespace myRPG.Services.PlayerServices
 
         public bool CheckIfPlayerExist(Player player)
         {
-
-            Player foundPlayer;
-
-            try
-            {
-                player = Store.Players
-                    .FirstOrDefault(p => p.Name == player.Name);
-                return false;
-            }
-            catch
-            {
-            }
+            Player foundPlayer = Store.Players.FirstOrDefault(p => p.Name == player.Name);
 
             if (Store.Players.Count != 0 && player is null)
             {
@@ -33,6 +24,14 @@ namespace myRPG.Services.PlayerServices
             }
 
             return true;
+        }
+
+        public Player CreatePlayer(CreatePlayer playerData)
+        {
+            var newPlayer = this.mapper.Map<Player>(playerData);
+            newPlayer.Id = new Guid();
+
+            return newPlayer;
         }
     }
 }

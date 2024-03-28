@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using myRPG.Dtos.Monster;
 
 namespace myRPG.Controllers
 {
@@ -11,31 +6,17 @@ namespace myRPG.Controllers
     [Route("api/[controller]")]
     public class MonsterController : ControllerBase
     {
-        [HttpGet]
-        public ActionResult<Monster> GetMonster()
+        private readonly IMonsterService monsterService;
+
+        public MonsterController(IMonsterService monsterService)
         {
-            Monster newMonster = new()
-            {
-                Name = "Skeleton",
-                HP = 200,
-                MP = 25,
-                Level = 1,
-                CharacterClass = CharacterClass.Warrior,
-                CharacterRace = CharacterRace.Skeleton,
-                CharacterType = CharacterType.Undead,
-            };
+            this.monsterService = monsterService;
+        }
 
-            GetMonsterDto monster = new()
-            {
-                HP = newMonster.HP,
-                MP = newMonster.MP,
-                Level = newMonster.Level,
-                CharacterClass = newMonster.CharacterClass.ToString(),
-                CharacterRace = newMonster.CharacterRace.ToString(),
-                CharacterType = newMonster.CharacterType.ToString(),
-            };
-
-            return Ok(monster);
+        [HttpGet("find-monster")]
+        public ActionResult<Monster> GetMonster(int level)
+        {
+            return Ok(this.monsterService.FindMonster(level));
         }
     }
 }

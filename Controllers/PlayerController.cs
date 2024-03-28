@@ -1,10 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using myRPG.Dtos.Player;
 
 namespace myRPG.Controllers
 {
@@ -12,7 +6,9 @@ namespace myRPG.Controllers
     [Route("api/[controller]")]
     public class PlayerController : ControllerBase
     {
-        private GetPlayerDto MapToGetPlayerDto(Character character) => this.mapper.Map<GetPlayerDto>(character);
+        private GetPlayerDto MapToGetPlayerDto(Character character) =>
+            this.mapper.Map<GetPlayerDto>(character);
+
         private readonly IPlayerService playerService;
         private readonly IMapper mapper;
 
@@ -28,11 +24,10 @@ namespace myRPG.Controllers
             if (String.IsNullOrWhiteSpace(name))
             {
                 return BadRequest("Name was assigned");
-            };
+            }
+            ;
 
-            var player = Store.Players.FirstOrDefault(
-                p => p.Name == name
-            );
+            var player = Store.Players.FirstOrDefault(p => p.Name == name);
 
             if (player is null)
             {
@@ -52,25 +47,24 @@ namespace myRPG.Controllers
                 return NoContent();
             }
 
-            var newPlayer = new Player()
-            {
-                Name = newCharacter.Name,
-                Level = 1,
-                HP = 100,
-                MP = 100,
-                CharacterClass = (CharacterClass)Enum.Parse(typeof(CharacterClass), newCharacter.CharacterClass),
-                CharacterRace = (CharacterRace)Enum.Parse(typeof(CharacterRace), newCharacter.CharacterRace),
-                CharacterType = (CharacterType)Enum.Parse(typeof(CharacterType), newCharacter.CharacterType),
-            };
+            var newPlayer = this.playerService.CreatePlayer(newCharacter);
+            GetPlayerDto newPlayerDto = this.mapper.Map<GetPlayerDto>(newPlayer);
 
-            if (this.playerService.CheckIfPlayerExist(newPlayer))
-            {
-                return BadRequest("Invalid user credentials");
-            }
+            // var newPlayer = new Player()
+            // {
+            //     Name = newCharacter.Name,
+            //     Level = 1,
+            //     HP = 100,
+            //     MP = 100,
+            //     CharacterClass = (CharacterClass)
+            //         Enum.Parse(typeof(CharacterClass), newCharacter.CharacterClass),
+            //     CharacterRace = (CharacterRace)
+            //         Enum.Parse(typeof(CharacterRace), newCharacter.CharacterRace),
+            //     CharacterType = (CharacterType)
+            //         Enum.Parse(typeof(CharacterType), newCharacter.CharacterType),
+            // };
 
             Store.Players.Add(newPlayer);
-
-            GetPlayerDto newPlayerDto = this.MapToGetPlayerDto(newPlayer);
 
             return Ok(newPlayerDto);
         }
