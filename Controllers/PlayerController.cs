@@ -38,7 +38,7 @@ namespace myRPG.Controllers
         }
 
         [HttpPost("create-hero")]
-        public ActionResult<Player> CreateCharakter([FromBody] CreatePlayer newCharacter)
+        public ActionResult<GetPlayerDto> CreateCharakter([FromBody] CreatePlayer newCharacter)
         {
             if (newCharacter == null)
             {
@@ -64,6 +64,7 @@ namespace myRPG.Controllers
         {
             var enemy = Store.Battle["enemy"];
             var player = Store.Battle["player"];
+            return Ok();
         }
 
         [HttpPatch("attack/magical/{spell}")]

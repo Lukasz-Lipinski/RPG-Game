@@ -36,16 +36,16 @@ namespace myRPG.Services.MonsterServices
                 (int)this.GetMPIndex(characterClass) * monsterLevel
                 + this.GetMPOnStart(characterClass);
 
-            var monster = new Monster()
+            var monster = new GetMonsterDto()
             {
                 Name = name,
                 HP = monsterHP,
                 MP = monsterMP,
                 Level = monsterLevel,
                 Id = Guid.NewGuid(),
-                CharacterRace = (CharacterRace)this.GenerateCharacterDetails(4),
-                CharacterClass = characterClass,
-                CharacterType = (CharacterType)this.GenerateCharacterDetails(3),
+                CharacterRace = ((CharacterRace)this.GenerateCharacterDetails(4)).ToString(),
+                CharacterClass = characterClass.ToString(),
+                CharacterType = ((CharacterType)this.GenerateCharacterDetails(3)).ToString(),
             };
 
             Store.Monsters.Add(monster);

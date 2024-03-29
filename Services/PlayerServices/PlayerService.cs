@@ -2,7 +2,7 @@ namespace myRPG.Services.PlayerServices
 {
     public class PlayerService : SettingStats, IPlayerService
     {
-        public Player GetPlayerById(Guid id) =>
+        public Character GetPlayerById(Guid id) =>
             Store.Players.FirstOrDefault(p => Guid.Equals(p.Id, id));
 
         private readonly IMapper mapper;
@@ -12,14 +12,14 @@ namespace myRPG.Services.PlayerServices
             this.mapper = mapper;
         }
 
-        public void AddPlayerToDB(Player player)
+        public void AddPlayerToDB(Character player)
         {
             Store.Players.Add(player);
         }
 
         public bool CheckIfPlayerExist(Guid id)
         {
-            Player foundPlayer = this.GetPlayerById(id);
+            Character foundPlayer = this.GetPlayerById(id);
 
             if (Store.Players.Count != 0 && foundPlayer is null)
             {
@@ -29,17 +29,19 @@ namespace myRPG.Services.PlayerServices
             return true;
         }
 
-        public Player CreatePlayer(CreatePlayer playerData)
+        public Character CreatePlayer(CreatePlayer playerData)
         {
-            var newPlayer = this.mapper.Map<Player>(playerData);
+            var newPlayer = this.mapper.Map<Character>(playerData);
             newPlayer.Id = Guid.NewGuid();
+            Enum.TryParse<CharacterClass>(newPlayer.CharacterClass, out CharacterClass characterClass);
+
             newPlayer.HP = (int)(
-                this.GetHPOnStart(newPlayer.CharacterClass)
-                + this.GetHPIndex(newPlayer.CharacterClass) * newPlayer.Level
+                this.GetHPOnStart(characterClass)
+                + this.GetHPIndex(characterClass) * newPlayer.Level
             );
             newPlayer.MP = (int)(
-                this.GetMPOnStart(newPlayer.CharacterClass)
-                + this.GetMPIndex(newPlayer.CharacterClass) * newPlayer.Level
+                this.GetMPOnStart(characterClass)
+                + this.GetMPIndex(characterClass) * newPlayer.Level
             );
 
             return newPlayer;

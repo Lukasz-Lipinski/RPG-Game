@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace myRPG.Dtos.Monster
+namespace myRPG.Dtos.Player
 {
-    public class GetMonsterDto : Character, IAttack
+    public class AttackPlayerDto : Character, IAttack
     {
         public int Attak()
         {

@@ -7,8 +7,8 @@ namespace myRPG.Dtos.Schemas
 {
     public interface ICharacterTypeRaceClass
     {
-        public CharacterClass CharacterClass { get; set; }
-        public CharacterRace CharacterRace { get; set; }
-        public CharacterType CharacterType { get; set; }
+        public string CharacterClass { get; set; }
+        public string CharacterRace { get; set; }
+        public string CharacterType { get; set; }
     }
 }

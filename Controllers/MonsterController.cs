@@ -16,9 +16,11 @@ namespace myRPG.Controllers
         }
 
         [HttpGet("find-monster")]
-        public ActionResult<Monster> GetMonster(int level)
+        public ActionResult<GetMonsterDto> GetMonster(int level)
         {
-            return Ok(this.monsterService.FindMonster(level));
+            var monster = this.monsterService.FindMonster(level);
+            var getMonsterDto = this.mapper.Map<GetMonsterDto>(monster);
+            return Ok(getMonsterDto);
         }
 
         [HttpGet("all-monsters")]

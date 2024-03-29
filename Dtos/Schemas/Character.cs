@@ -5,12 +5,17 @@ using System.Threading.Tasks;
 
 namespace myRPG.Dtos.Schemas
 {
-    public abstract class Character
+    public class Character : ICharacterTypeRaceClass, IStatistics, IIdentifier
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
-
-        public abstract int Attack();
-        public abstract int MagicAttack();
-        public abstract void Defend();
+        public string CharacterClass { get; set; }
+        public string CharacterRace { get; set; }
+        public string CharacterType { get; set; }
+        public int Damage { get; set; }
+        public int Defence { get; set; }
+        public int HP { get; set; }
+        public int MP { get; set; }
+        public int Level { get; set; }
     }
 }
