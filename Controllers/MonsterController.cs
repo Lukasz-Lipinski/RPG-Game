@@ -18,6 +18,10 @@ namespace myRPG.Controllers
         [HttpGet("find-monster")]
         public ActionResult<GetMonsterDto> GetMonster(int level)
         {
+            if (Store.Battle.ContainsKey("enemy"))
+            {
+                return Conflict("Monster found");
+            }
             var monster = this.monsterService.FindMonster(level);
             var getMonsterDto = this.mapper.Map<GetMonsterDto>(monster);
             return Ok(getMonsterDto);

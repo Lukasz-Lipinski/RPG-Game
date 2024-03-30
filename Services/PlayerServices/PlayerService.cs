@@ -33,7 +33,7 @@ namespace myRPG.Services.PlayerServices
         {
             var newPlayer = this.mapper.Map<Character>(playerData);
             newPlayer.Id = Guid.NewGuid();
-            Enum.TryParse<CharacterClass>(newPlayer.CharacterClass, out CharacterClass characterClass);
+            Enum.TryParse(newPlayer.CharacterClass, out CharacterClass characterClass);
 
             newPlayer.HP = (int)(
                 this.GetHPOnStart(characterClass)
@@ -43,6 +43,8 @@ namespace myRPG.Services.PlayerServices
                 this.GetMPOnStart(characterClass)
                 + this.GetMPIndex(characterClass) * newPlayer.Level
             );
+            newPlayer.Damage = this.GetDmgOnStart(characterClass);
+            newPlayer.Level = 1;
 
             return newPlayer;
         }

@@ -5,21 +5,7 @@ using System.Threading.Tasks;
 
 namespace myRPG.Dtos.Monster
 {
-    public class GetMonsterDto : Character, IAttack
+    public class GetMonsterDto : Character
     {
-        public int Attak()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int MagicAttak(string spell, out int MP)
-        {
-            throw new NotImplementedException();
-        }
-
-        int IAttack.Defence()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

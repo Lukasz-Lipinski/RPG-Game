@@ -6,9 +6,6 @@ namespace myRPG.Controllers
     [Route("api/[controller]")]
     public class PlayerController : ControllerBase
     {
-        private GetPlayerDto MapToGetPlayerDto(Character character) =>
-            this.mapper.Map<GetPlayerDto>(character);
-
         private readonly IPlayerService playerService;
         private readonly IMapper mapper;
 
@@ -64,7 +61,25 @@ namespace myRPG.Controllers
         {
             var enemy = Store.Battle["enemy"];
             var player = Store.Battle["player"];
-            return Ok();
+            var attackEnemyDto = this.mapper.Map<AttackMonsterDto>(enemy);
+            var attackPlayerDto = this.mapper.Map<AttackPlayerDto>(player);
+
+            attackPlayerDto.Attak(ref enemy);
+
+            if (enemy.HP <= 0)
+            {
+                Store.Battle.Remove("enemy");
+                return Ok(Store.Battle);
+            }
+
+            attackEnemyDto.Attak(ref player);
+
+            Store.Battle.Remove("player");
+            Store.Battle.Remove("enemy");
+            Store.Battle.Add("player", player);
+            Store.Battle.Add("enemy", enemy);
+
+            return Ok(Store.Battle);
         }
 
         [HttpPatch("attack/magical/{spell}")]

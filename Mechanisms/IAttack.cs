@@ -7,7 +7,7 @@ namespace myRPG.Dtos.Schemas
 {
     public interface IAttack
     {
-        public int Attak();
+        public void Attak(ref Character enemy);
         public int Defence();
         public int MagicAttak(string spell, out int MP);
     }

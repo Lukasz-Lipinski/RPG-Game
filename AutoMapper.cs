@@ -5,9 +5,11 @@ namespace myRPG
         public AutoMapper()
         {
             CreateMap<Character, GetPlayerDto>();
+            CreateMap<Character, AttackPlayerDto>();
             CreateMap<CreatePlayer, Character>();
 
             CreateMap<Character, GetMonsterDto>();
+            CreateMap<Character, AttackMonsterDto>();
         }
     }
 }

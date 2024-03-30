@@ -36,13 +36,14 @@ namespace myRPG.Services.MonsterServices
                 (int)this.GetMPIndex(characterClass) * monsterLevel
                 + this.GetMPOnStart(characterClass);
 
-            var monster = new GetMonsterDto()
+            var monster = new Character()
             {
                 Name = name,
                 HP = monsterHP,
                 MP = monsterMP,
                 Level = monsterLevel,
                 Id = Guid.NewGuid(),
+                Damage = this.GetDmgOnStart(characterClass),
                 CharacterRace = ((CharacterRace)this.GenerateCharacterDetails(4)).ToString(),
                 CharacterClass = characterClass.ToString(),
                 CharacterType = ((CharacterType)this.GenerateCharacterDetails(3)).ToString(),
