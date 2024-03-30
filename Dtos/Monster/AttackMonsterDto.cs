@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace myRPG.Dtos.Player
+namespace myRPG.Dtos.Monster
 {
-    public class AttackPlayerDto : CharacterWithAttack
+    public class AttackMonsterDto : CharacterWithAttack
     {
+
     }
 }
