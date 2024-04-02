@@ -1,6 +1,6 @@
 namespace myRPG.Dtos.Player
 {
-    public class CreatePlayer : IGetCharacterTypeRaceClass
+    public class CreatePlayer : ICharacterTypeRaceClass
     {
         public string Name { get; set; }
         public string CharacterClass { get; set; }

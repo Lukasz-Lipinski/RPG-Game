@@ -1,5 +1,6 @@
 global using myRPG.DB;
 global using myRPG.Dtos.Schemas;
+global using myRPG.Dtos.Mechanisms;
 global using myRPG.Dtos.Monster;
 global using myRPG.Dtos.Player;
 global using myRPG.Services.PlayerServices;

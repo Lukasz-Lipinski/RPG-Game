@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace myRPG.Dtos.Monster
 {
-    public class GetMonsterDto : Character
+    public class AttackMonsterDto : CharacterWithAttack
     {
+
     }
 }

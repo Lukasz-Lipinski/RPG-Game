@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace myRPG.Dtos.Player
+namespace myRPG.Dtos.Schemas
 {
-    public class GetPlayerDto : Character, ICharacterTypeRaceClass, IStatistics
+    public interface IStatistics
     {
-        public string CharacterClass { get; set; }
-        public string CharacterRace { get; set; }
-        public string CharacterType { get; set; }
         public int Damage { get; set; }
         public int Defence { get; set; }
         public int HP { get; set; }

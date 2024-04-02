@@ -1,6 +1,6 @@
 namespace myRPG.Services.MonsterServices
 {
-    public class MonsterService : IMonsterService
+    public class MonsterService : SettingStats, IMonsterService
     {
         private readonly IMapper mapper;
 
@@ -9,19 +9,10 @@ namespace myRPG.Services.MonsterServices
             this.mapper = mapper;
         }
 
-        private int GenerateLevel(int level) => new Random().Next(level);
-
-        private int GenerateHPOrMP() => new Random().Next(10, 150);
-
-        private int GenerateCharacterDetails(int max = 3) => new Random().Next(0, max);
-
         public GetMonsterDto? FindMonster(int playerLevel)
         {
             int maxLevel = playerLevel + 3;
             int minLevel = playerLevel - 3 <= 1 ? playerLevel : playerLevel - 3;
-
-            System.Console.WriteLine(maxLevel);
-            System.Console.WriteLine(minLevel);
 
             var monsters = Store.Monsters
                 .AsReadOnly()
@@ -37,18 +28,25 @@ namespace myRPG.Services.MonsterServices
         public GetMonsterDto CreateNewMonster(int playerLevel, string name)
         {
             int monsterLevel = this.GenerateLevel(playerLevel);
-            int monsterHP = this.GenerateHPOrMP();
-            int monsterMP = this.GenerateHPOrMP();
+            CharacterClass characterClass = (CharacterClass)this.GenerateCharacterDetails(5);
+            int monsterHP =
+                (int)this.GetHPIndex(characterClass) * monsterLevel
+                + this.GetHPOnStart(characterClass);
+            int monsterMP =
+                (int)this.GetMPIndex(characterClass) * monsterLevel
+                + this.GetMPOnStart(characterClass);
 
-            var monster = new Monster()
+            var monster = new Character()
             {
                 Name = name,
-                HP = monsterLevel * monsterHP,
-                MP = monsterLevel * monsterMP,
+                HP = monsterHP,
+                MP = monsterMP,
                 Level = monsterLevel,
-                CharacterRace = (CharacterRace)this.GenerateCharacterDetails(3),
-                CharacterClass = (CharacterClass)this.GenerateCharacterDetails(3),
-                CharacterType = (CharacterType)this.GenerateCharacterDetails(3),
+                Id = Guid.NewGuid(),
+                Damage = this.GetDmgOnStart(characterClass),
+                CharacterRace = ((CharacterRace)this.GenerateCharacterDetails(4)).ToString(),
+                CharacterClass = characterClass.ToString(),
+                CharacterType = ((CharacterType)this.GenerateCharacterDetails(3)).ToString(),
             };
 
             Store.Monsters.Add(monster);

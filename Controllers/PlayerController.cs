@@ -6,9 +6,6 @@ namespace myRPG.Controllers
     [Route("api/[controller]")]
     public class PlayerController : ControllerBase
     {
-        private GetPlayerDto MapToGetPlayerDto(Character character) =>
-            this.mapper.Map<GetPlayerDto>(character);
-
         private readonly IPlayerService playerService;
         private readonly IMapper mapper;
 
@@ -18,29 +15,27 @@ namespace myRPG.Controllers
             this.mapper = mapper;
         }
 
-        [HttpGet("{name}")]
-        public ActionResult<Player> GetPlayer(string name)
+        [HttpPost("login")]
+        public ActionResult<string> GetPlayer([FromBody] Guid playerId)
         {
-            if (String.IsNullOrWhiteSpace(name))
+            if (Store.Battle.ContainsKey("player"))
             {
-                return BadRequest("Name was assigned");
+                return BadRequest("You cannot log once again");
             }
-            ;
 
-            var player = Store.Players.FirstOrDefault(p => p.Name == name);
+            var player = this.playerService.GetPlayerById(playerId);
 
             if (player is null)
             {
-                return BadRequest("Invalid name");
+                return BadRequest("Invalid data");
             }
 
-            GetPlayerDto newPlayer = this.MapToGetPlayerDto(player);
-
-            return Ok(newPlayer);
+            Store.Battle.Add("player", player);
+            return Ok("You're logged successfully");
         }
 
         [HttpPost("create-hero")]
-        public ActionResult<Player> CreateCharakter([FromBody] CreatePlayer newCharacter)
+        public ActionResult<GetPlayerDto> CreateCharakter([FromBody] CreatePlayer newCharacter)
         {
             if (newCharacter == null)
             {
@@ -50,23 +45,53 @@ namespace myRPG.Controllers
             var newPlayer = this.playerService.CreatePlayer(newCharacter);
             GetPlayerDto newPlayerDto = this.mapper.Map<GetPlayerDto>(newPlayer);
 
-            // var newPlayer = new Player()
-            // {
-            //     Name = newCharacter.Name,
-            //     Level = 1,
-            //     HP = 100,
-            //     MP = 100,
-            //     CharacterClass = (CharacterClass)
-            //         Enum.Parse(typeof(CharacterClass), newCharacter.CharacterClass),
-            //     CharacterRace = (CharacterRace)
-            //         Enum.Parse(typeof(CharacterRace), newCharacter.CharacterRace),
-            //     CharacterType = (CharacterType)
-            //         Enum.Parse(typeof(CharacterType), newCharacter.CharacterType),
-            // };
-
             Store.Players.Add(newPlayer);
 
             return Ok(newPlayerDto);
+        }
+
+        [HttpGet("all-players")]
+        public IActionResult GetAllPlayers()
+        {
+            return Ok(Store.Players);
+        }
+
+        [HttpPatch("attack/basic")]
+        public ActionResult<Dictionary<string, Character>> Attack()
+        {
+            var enemy = Store.Battle["enemy"];
+            var player = Store.Battle["player"];
+            var attackEnemyDto = this.mapper.Map<AttackMonsterDto>(enemy);
+            var attackPlayerDto = this.mapper.Map<AttackPlayerDto>(player);
+
+            attackPlayerDto.Attak(ref enemy);
+
+            if (enemy.HP <= 0)
+            {
+                Store.Battle.Remove("enemy");
+                return Ok(Store.Battle);
+            }
+
+            attackEnemyDto.Attak(ref player);
+
+            Store.Battle.Remove("player");
+            Store.Battle.Remove("enemy");
+            Store.Battle.Add("player", player);
+            Store.Battle.Add("enemy", enemy);
+
+            return Ok(Store.Battle);
+        }
+
+        [HttpPatch("attack/magical/{spell}")]
+        public ActionResult<Dictionary<string, Character>> MagicalAttack(string spell)
+        {
+            return Ok();
+        }
+
+        [HttpPatch("attack/skill/{skill}")]
+        public ActionResult<Dictionary<string, Character>> SkillAttack(string skill)
+        {
+            return Ok();
         }
     }
 }

@@ -4,10 +4,12 @@ namespace myRPG
     {
         public AutoMapper()
         {
-            CreateMap<Player, GetPlayerDto>();
-            CreateMap<CreatePlayer, Player>();
+            CreateMap<Character, GetPlayerDto>();
+            CreateMap<Character, AttackPlayerDto>();
+            CreateMap<CreatePlayer, Character>();
 
-            CreateMap<Monster, GetMonsterDto>();
+            CreateMap<Character, GetMonsterDto>();
+            CreateMap<Character, AttackMonsterDto>();
         }
     }
 }

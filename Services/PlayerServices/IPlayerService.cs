@@ -7,8 +7,9 @@ namespace myRPG.Services.PlayerServices
 {
     public interface IPlayerService
     {
-        public Player CreatePlayer(CreatePlayer playerData);
-        public bool CheckIfPlayerExist(Player player);
-        public void AddPlayerToDB(Player player);
+        public Character CreatePlayer(CreatePlayer playerData);
+        public bool CheckIfPlayerExist(Guid id);
+        public void AddPlayerToDB(Character player);
+        public Character GetPlayerById(Guid id);
     }
 }
