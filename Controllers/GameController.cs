@@ -33,5 +33,44 @@ namespace myRPG.Controllers
             Store.Battle.Add("enemy", monster);
             return Ok(Store.Battle);
         }
+
+
+        [HttpPatch("attack/basic")]
+        public ActionResult<Dictionary<string, Character>> Attack()
+        {
+            var enemy = Store.Battle["enemy"];
+            var player = Store.Battle["player"];
+            var attackEnemyDto = this.mapper.Map<AttackMonsterDto>(enemy);
+            var attackPlayerDto = this.mapper.Map<AttackPlayerDto>(player);
+
+            attackPlayerDto.Attak(ref enemy);
+
+            if (enemy.HP <= 0)
+            {
+                Store.Battle.Remove("enemy");
+                return Ok(Store.Battle);
+            }
+
+            attackEnemyDto.Attak(ref player);
+
+            /*Store.Battle.Remove("player");
+            Store.Battle.Add("player", player);
+            Store.Battle.Remove("enemy");
+            Store.Battle.Add("enemy", enemy);*/
+
+            return Ok(Store.Battle);
+        }
+
+        [HttpPatch("attack/magical/{spell}")]
+        public ActionResult<Dictionary<string, Character>> MagicalAttack(string spell)
+        {
+            return Ok();
+        }
+
+        [HttpPatch("attack/skill/{skill}")]
+        public ActionResult<Dictionary<string, Character>> SkillAttack(string skill)
+        {
+            return Ok();
+        }
     }
 }
