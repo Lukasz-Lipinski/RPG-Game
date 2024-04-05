@@ -1,3 +1,5 @@
+using myRPG.Mechanisms.Attacks;
+
 namespace myRPG.Dtos.Schemas
 {
     public class CharacterWithAttack : Character, IAttack

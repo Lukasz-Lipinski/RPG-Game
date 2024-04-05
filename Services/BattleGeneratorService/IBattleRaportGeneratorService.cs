@@ -4,7 +4,7 @@ namespace myRPG.Services.BattleGeneratorService
 {
     public interface IBattleRaportGeneratorService
     {
-        public string GenerateAttackReport(string characterName, string skill, int damage);
-        public HashSet<AttackReport> GenerateBattleReport(string attackReport);
+        public AttackReportDto GenerateAttackReport(string characterName, string usedSkill, int takenDamage, CharacterStatisticDto characterStats);
+        public void GenerateBattleReport(AttackReportDto playerAttackReport, AttackReportDto enemyAttackReport, int tourNumber);
     }
 }

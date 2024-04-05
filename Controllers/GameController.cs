@@ -23,7 +23,7 @@ namespace myRPG.Controllers
                 return NoContent();
             }
             var player = Store.Battle["player"];
-            var monster = this.monsterService.FindMonster(player.Level);
+            var monster = this.monsterService.FindMonster(player!.Level);
 
             if (monster is null)
             {
@@ -53,10 +53,7 @@ namespace myRPG.Controllers
 
             attackEnemyDto.Attak(ref player);
 
-            /*Store.Battle.Remove("player");
-            Store.Battle.Add("player", player);
-            Store.Battle.Remove("enemy");
-            Store.Battle.Add("enemy", enemy);*/
+
 
             return Ok(Store.Battle);
         }

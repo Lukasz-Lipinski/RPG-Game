@@ -4,14 +4,28 @@ namespace myRPG.Services.BattleGeneratorService
 {
     public class BattleRaportGeneratorService : IBattleRaportGeneratorService
     {
-        public string GenerateAttackReport(string characterName, string skill, int damage) => $@"
-                Player: {characterName}
-                used {skill} on Enemy
-                damage: {damage}";
-
-        public HashSet<AttackReport> GenerateBattleReport(string attackReport)
+        public AttackReportDto GenerateAttackReport(string characterName, string usedSkill, int takenDamage, CharacterStatisticDto playerStats)
         {
-            throw new NotImplementedException();
+            return new AttackReportDto()
+            {
+                CharacterName = characterName,
+                Skill = usedSkill,
+                Damage = takenDamage,
+                CharacterStatistics = playerStats
+            };
+        }
+
+        public void GenerateBattleReport(AttackReportDto attackReportEnemy, AttackReportDto attackReportPlayer, int round)
+        {
+            var TourDto = new TourDto()
+            {
+                Number = round
+            };
+
+            TourDto.Reports.Add(attackReportPlayer);
+            TourDto.Reports.Add(attackReportEnemy);
+
+            Store.AttackReports.Add(TourDto);
         }
     }
 }
