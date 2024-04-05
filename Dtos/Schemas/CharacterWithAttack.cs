@@ -1,24 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using myRPG.Mechanisms.Attacks;
 
 namespace myRPG.Dtos.Schemas
 {
     public class CharacterWithAttack : Character, IAttack
     {
-        private int GetDmg(int minDmg, int maxDmg) => new Random().Next(minDmg, maxDmg);
-        public void Attak(ref Character enemy)
+        public void Attak(ref Character enemy, out int damage)
         {
             var levelIndex = this.Level * 0.1;
-            var dmg = (int)(this.AttackIndexRelatedToClass() * this.AttackIndexRelatedToRace() + this.Damage);
-            var minDmg = dmg - 4 <= 1 ? 1 : dmg - 4;
-            var randomDmg = this.GetDmg(minDmg, dmg);
-            enemy.HP -= (int)(levelIndex * randomDmg);
-            System.Console.WriteLine(enemy.HP);
+            var dmg = (int)(levelIndex * this.Damage + this.Damage);
+            damage = dmg;
+            enemy.HP -= dmg;
         }
 
-        public int MagicAttak(string spell, out int MP)
+        public int MagicAttak(string spell, out int MP, out int damage)
         {
             throw new NotImplementedException();
         }

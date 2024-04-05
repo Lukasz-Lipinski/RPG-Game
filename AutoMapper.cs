@@ -7,6 +7,7 @@ namespace myRPG
             CreateMap<Character, GetPlayerDto>();
             CreateMap<Character, AttackPlayerDto>();
             CreateMap<CreatePlayer, Character>();
+            CreateMap<CreatePlayer, CharacterStatisticDto>();
 
             CreateMap<Character, GetMonsterDto>();
             CreateMap<Character, AttackMonsterDto>();

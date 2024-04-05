@@ -1,11 +1,12 @@
+global using AutoMapper;
 global using myRPG.DB;
-global using myRPG.Dtos.Schemas;
 global using myRPG.Dtos.Mechanisms;
 global using myRPG.Dtos.Monster;
 global using myRPG.Dtos.Player;
-global using myRPG.Services.PlayerServices;
+global using myRPG.Dtos.Schemas;
 global using myRPG.Services.MonsterServices;
-global using AutoMapper;
+global using myRPG.Services.PlayerServices;
+using myRPG.Services.BattleGeneratorService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IPlayerService, PlayerService>();
 builder.Services.AddScoped<IMonsterService, MonsterService>();
+builder.Services.AddScoped<IBattleRaportGeneratorService, BattleRaportGeneratorService>();
 
 var app = builder.Build();
 
