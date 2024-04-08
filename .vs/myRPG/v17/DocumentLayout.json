@@ -3,36 +3,40 @@
   "WorkspaceRootPath": "C:\\Projects\\c#-projects\\RPG-Game\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|c:\\projects\\c#-projects\\rpg-game\\controllers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|solutionrelative:controllers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|c:\\projects\\c#-projects\\rpg-game\\automapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|solutionrelative:automapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|c:\\projects\\c#-projects\\rpg-game\\mechanisms\\attacks\\iattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|solutionrelative:mechanisms\\attacks\\iattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|c:\\projects\\c#-projects\\rpg-game\\services\\playerservices\\playerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|solutionrelative:services\\playerservices\\playerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|c:\\projects\\c#-projects\\rpg-game\\dtos\\schemas\\characterwithattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|solutionrelative:dtos\\schemas\\characterwithattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|c:\\projects\\c#-projects\\rpg-game\\dtos\\response\\attackreportdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|solutionrelative:dtos\\response\\attackreportdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|c:\\projects\\c#-projects\\rpg-game\\services\\battlegeneratorservice\\battleraportgeneratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|solutionrelative:services\\battlegeneratorservice\\battleraportgeneratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|c:\\projects\\c#-projects\\rpg-game\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|c:\\projects\\c#-projects\\rpg-game\\controllers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|solutionrelative:controllers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|c:\\projects\\c#-projects\\rpg-game\\dtos\\monster\\getmonsterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|solutionrelative:dtos\\monster\\getmonsterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|c:\\projects\\c#-projects\\rpg-game\\automapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|solutionrelative:automapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|c:\\projects\\c#-projects\\rpg-game\\services\\battlegeneratorservice\\ibattleraportgeneratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|solutionrelative:services\\battlegeneratorservice\\ibattleraportgeneratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|c:\\projects\\c#-projects\\rpg-game\\controllers\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|solutionrelative:controllers\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|c:\\projects\\c#-projects\\rpg-game\\dtos\\response\\tourdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|solutionrelative:dtos\\response\\tourdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|c:\\projects\\c#-projects\\rpg-game\\dtos\\response\\attackreportdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4124412-796F-4449-B943-71D03E663D29}|myRPG.csproj|solutionrelative:dtos\\response\\attackreportdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,65 +50,78 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AutoMapper.cs",
-              "DocumentMoniker": "C:\\Projects\\c#-projects\\RPG-Game\\AutoMapper.cs",
-              "RelativeDocumentMoniker": "AutoMapper.cs",
-              "ToolTip": "C:\\Projects\\c#-projects\\RPG-Game\\AutoMapper.cs",
-              "RelativeToolTip": "AutoMapper.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "DocumentIndex": 5,
+              "Title": "IBattleRaportGeneratorService.cs",
+              "DocumentMoniker": "C:\\Projects\\c#-projects\\RPG-Game\\Services\\BattleGeneratorService\\IBattleRaportGeneratorService.cs",
+              "RelativeDocumentMoniker": "Services\\BattleGeneratorService\\IBattleRaportGeneratorService.cs",
+              "ToolTip": "C:\\Projects\\c#-projects\\RPG-Game\\Services\\BattleGeneratorService\\IBattleRaportGeneratorService.cs",
+              "RelativeToolTip": "Services\\BattleGeneratorService\\IBattleRaportGeneratorService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAABVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T12:44:29.438Z",
+              "WhenOpened": "2024-04-08T11:38:14.705Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IAttack.cs",
-              "DocumentMoniker": "C:\\Projects\\c#-projects\\RPG-Game\\Mechanisms\\Attacks\\IAttack.cs",
-              "RelativeDocumentMoniker": "Mechanisms\\Attacks\\IAttack.cs",
-              "ToolTip": "C:\\Projects\\c#-projects\\RPG-Game\\Mechanisms\\Attacks\\IAttack.cs",
-              "RelativeToolTip": "Mechanisms\\Attacks\\IAttack.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABGAAAA",
+              "DocumentIndex": 6,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Projects\\c#-projects\\RPG-Game\\Controllers\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PlayerController.cs",
+              "ToolTip": "C:\\Projects\\c#-projects\\RPG-Game\\Controllers\\PlayerController.cs",
+              "RelativeToolTip": "Controllers\\PlayerController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T12:40:57.516Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CharacterWithAttack.cs",
-              "DocumentMoniker": "C:\\Projects\\c#-projects\\RPG-Game\\Dtos\\Schemas\\CharacterWithAttack.cs",
-              "RelativeDocumentMoniker": "Dtos\\Schemas\\CharacterWithAttack.cs",
-              "ToolTip": "C:\\Projects\\c#-projects\\RPG-Game\\Dtos\\Schemas\\CharacterWithAttack.cs",
-              "RelativeToolTip": "Dtos\\Schemas\\CharacterWithAttack.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T12:39:51.283Z",
+              "WhenOpened": "2024-04-08T11:33:47.262Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "PlayerService.cs",
-              "DocumentMoniker": "C:\\Projects\\c#-projects\\RPG-Game\\Services\\PlayerServices\\PlayerService.cs",
-              "RelativeDocumentMoniker": "Services\\PlayerServices\\PlayerService.cs",
-              "ToolTip": "C:\\Projects\\c#-projects\\RPG-Game\\Services\\PlayerServices\\PlayerService.cs",
-              "RelativeToolTip": "Services\\PlayerServices\\PlayerService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADQAAAAAAAAA",
+              "Title": "GetMonsterDto.cs",
+              "DocumentMoniker": "C:\\Projects\\c#-projects\\RPG-Game\\Dtos\\Monster\\GetMonsterDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\Monster\\GetMonsterDto.cs",
+              "ToolTip": "C:\\Projects\\c#-projects\\RPG-Game\\Dtos\\Monster\\GetMonsterDto.cs",
+              "RelativeToolTip": "Dtos\\Monster\\GetMonsterDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T12:39:33.503Z",
+              "WhenOpened": "2024-04-08T11:33:22.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AutoMapper.cs",
+              "DocumentMoniker": "C:\\Projects\\c#-projects\\RPG-Game\\AutoMapper.cs",
+              "RelativeDocumentMoniker": "AutoMapper.cs",
+              "ToolTip": "C:\\Projects\\c#-projects\\RPG-Game\\AutoMapper.cs",
+              "RelativeToolTip": "AutoMapper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T11:24:05.973Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "BattleRaportGeneratorService.cs",
+              "DocumentMoniker": "C:\\Projects\\c#-projects\\RPG-Game\\Services\\BattleGeneratorService\\BattleRaportGeneratorService.cs",
+              "RelativeDocumentMoniker": "Services\\BattleGeneratorService\\BattleRaportGeneratorService.cs",
+              "ToolTip": "C:\\Projects\\c#-projects\\RPG-Game\\Services\\BattleGeneratorService\\BattleRaportGeneratorService.cs",
+              "RelativeToolTip": "Services\\BattleGeneratorService\\BattleRaportGeneratorService.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAACkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T10:56:00.391Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "GameController.cs",
               "DocumentMoniker": "C:\\Projects\\c#-projects\\RPG-Game\\Controllers\\GameController.cs",
               "RelativeDocumentMoniker": "Controllers\\GameController.cs",
-              "ToolTip": "C:\\Projects\\c#-projects\\RPG-Game\\Controllers\\GameController.cs",
-              "RelativeToolTip": "Controllers\\GameController.cs",
-              "ViewState": "AQIAACMAAAAAAAAAAAAewEUAAAAtAAAA",
+              "ToolTip": "C:\\Projects\\c#-projects\\RPG-Game\\Controllers\\GameController.cs*",
+              "RelativeToolTip": "Controllers\\GameController.cs*",
+              "ViewState": "AQIAAC8AAAAAAAAAAIA0wFcAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-05T10:22:53.331Z",
               "EditorCaption": ""
@@ -123,26 +140,13 @@
         "Y": 1,
         "Width": 1534,
         "Height": 814,
-        "WindowState": 0
+        "WindowState": 2
       },
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AttackReportDto.cs",
-              "DocumentMoniker": "C:\\Projects\\c#-projects\\RPG-Game\\Dtos\\Response\\AttackReportDto.cs",
-              "RelativeDocumentMoniker": "Dtos\\Response\\AttackReportDto.cs",
-              "ToolTip": "C:\\Projects\\c#-projects\\RPG-Game\\Dtos\\Response\\AttackReportDto.cs",
-              "RelativeToolTip": "Dtos\\Response\\AttackReportDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T13:35:00.52Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 7,
@@ -151,20 +155,34 @@
               "RelativeDocumentMoniker": "Dtos\\Response\\TourDto.cs",
               "ToolTip": "C:\\Projects\\c#-projects\\RPG-Game\\Dtos\\Response\\TourDto.cs",
               "RelativeToolTip": "Dtos\\Response\\TourDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-05T09:01:41.278Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
+              "Title": "AttackReportDto.cs",
+              "DocumentMoniker": "C:\\Projects\\c#-projects\\RPG-Game\\Dtos\\Response\\AttackReportDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\Response\\AttackReportDto.cs",
+              "ToolTip": "C:\\Projects\\c#-projects\\RPG-Game\\Dtos\\Response\\AttackReportDto.cs",
+              "RelativeToolTip": "Dtos\\Response\\AttackReportDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T13:35:00.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Projects\\c#-projects\\RPG-Game\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Projects\\c#-projects\\RPG-Game\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAABXAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-05T12:37:04.599Z",
               "EditorCaption": ""

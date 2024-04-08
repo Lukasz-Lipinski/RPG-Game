@@ -15,17 +15,26 @@ namespace myRPG.Services.BattleGeneratorService
             };
         }
 
-        public void GenerateBattleReport(AttackReportDto attackReportEnemy, AttackReportDto attackReportPlayer, int round)
+        public void GenerateBattleReport(ref AttackReportDto attackReportPlayer, ref AttackReportDto? attackReportEnemy, int round)
         {
             var TourDto = new TourDto()
             {
-                Number = round
+                Number = round,
+                Reports = new()
             };
 
             TourDto.Reports.Add(attackReportPlayer);
-            TourDto.Reports.Add(attackReportEnemy);
+            if (attackReportEnemy is not null)
+            {
+                TourDto.Reports.Add(attackReportEnemy);
+            }
 
             Store.AttackReports.Add(TourDto);
+        }
+
+        public void GenerateWinnerAttackReport(ref TourDto tour, Character character)
+        {
+            tour.Winner = character;
         }
     }
 }
