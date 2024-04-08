@@ -22,6 +22,8 @@ namespace myRPG.Controllers
         [HttpGet("start-battle")]
         public ActionResult<Dictionary<string, Character>> StartBattle()
         {
+            Store.AttackReports.Clear();
+
             if (!Store.Battle.ContainsKey("player"))
             {
                 return NoContent();
@@ -34,10 +36,20 @@ namespace myRPG.Controllers
                 return NoContent();
             }
 
+            if (Store.Battle.ContainsKey("enemy"))
+            {
+                return BadRequest("Monster was already added");
+            }
+
             Store.Battle.Add("enemy", monster);
             return Ok(Store.Battle);
         }
 
+        [HttpGet("get-battle-reports")]
+        public ActionResult<HashSet<TourDto>> GetAllTours()
+        {
+            return Ok(Store.AttackReports);
+        }
 
         [HttpPatch("attack/basic")]
         public ActionResult<HashSet<TourDto>> Attack()
@@ -46,26 +58,33 @@ namespace myRPG.Controllers
             var player = Store.Battle["player"];
             var attackEnemyDto = this.mapper.Map<AttackMonsterDto>(enemy);
             var attackPlayerDto = this.mapper.Map<AttackPlayerDto>(player);
-            AttackReportDto playerAttackReport;
-            AttackReportDto enemyAttackReport;
+            AttackReportDto playerAttackReport = null;
+            AttackReportDto enemyAttackReport = null;
 
             attackPlayerDto.Attak(ref enemy, out int playerDmg);
 
+            var playerStatsDto = this.mapper.Map<CharacterStatisticDto>(player);
             if (enemy.HP <= 0)
             {
+                playerAttackReport = this.battleGeneratorService.GenerateAttackReport(player!.Name, "basic attack", playerDmg, playerStatsDto);
+                this.battleGeneratorService.GenerateBattleReport(ref playerAttackReport, ref enemyAttackReport, Store.AttackReports.Count);
+
+                var lastTour = Store.AttackReports.Last();
+
+                this.battleGeneratorService.GenerateWinnerAttackReport(ref lastTour, player);
                 Store.Battle.Remove("enemy");
-                return Ok(Store.Battle);
+                return Ok(Store.AttackReports);
             }
 
-            attackEnemyDto.Attak(ref player, out int enemyDmg);
+            attackEnemyDto.Attak(ref player!, out int enemyDmg);
 
-            var playerStatsDto = this.mapper.Map<CharacterStatisticDto>(player);
+            playerStatsDto = this.mapper.Map<CharacterStatisticDto>(player);
             var enemyStatsDto = this.mapper.Map<CharacterStatisticDto>(enemy);
 
             playerAttackReport = this.battleGeneratorService.GenerateAttackReport(player.Name, "basic attack", playerDmg, playerStatsDto);
             enemyAttackReport = this.battleGeneratorService.GenerateAttackReport(enemy.Name, "basic attack", enemyDmg, enemyStatsDto);
 
-            this.battleGeneratorService.GenerateBattleReport(playerAttackReport, enemyAttackReport, Store.AttackReports.Count);
+            this.battleGeneratorService.GenerateBattleReport(ref playerAttackReport, ref enemyAttackReport!, Store.AttackReports.Count);
 
             return Ok(Store.AttackReports);
         }
