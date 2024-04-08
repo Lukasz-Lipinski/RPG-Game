@@ -2028,24 +2028,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\llipinsk\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Wookie\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\c#-projects\\RPG-Game\\myRPG.csproj",
+      "projectUniqueName": "C:\\Projects\\dotnet\\myRPG\\myRPG.csproj",
       "projectName": "myRPG",
-      "projectPath": "C:\\Projects\\c#-projects\\RPG-Game\\myRPG.csproj",
-      "packagesPath": "C:\\Users\\llipinsk\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\c#-projects\\RPG-Game\\obj\\",
+      "projectPath": "C:\\Projects\\dotnet\\myRPG\\myRPG.csproj",
+      "packagesPath": "C:\\Users\\Wookie\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\dotnet\\myRPG\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\llipinsk\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Wookie\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2124,6 +2119,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.17, 7.0.17]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[7.0.17, 7.0.17]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.17, 7.0.17]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.17, 7.0.17]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
